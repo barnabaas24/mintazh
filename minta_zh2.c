@@ -96,6 +96,13 @@ int main(int argc, char** argv){
             }
             printf("%s -től érkezett oltottak száma: %i, és betegek száma: %i\n",aranyok2.nev, aranyok2.egeszseges, aranyok2.beteg);
 
+            int kapott = aranyok1.egeszseges+aranyok2.egeszseges;
+            int nemkapott = aranyok1.beteg+aranyok2.beteg;
+            FILE* file;
+            file = fopen("naplo.txt","w");
+            fprintf(file,"%i db oltásra érkezőből %i kapott és %i nem kapott oltást.\n",paciensek,kapott,nemkapott);
+            fclose(file);
+
 
             //fajlba
             //fputs ->ilyenkor lehet formazni sprintf-el 
