@@ -101,6 +101,9 @@ int main(int argc, char** argv){
             FILE* file;
             file = fopen("naplo.txt","w");
             fprintf(file,"%i db oltásra érkezőből %i kapott és %i nem kapott oltást.\n",paciensek,kapott,nemkapott);
+            // char buffer[1024];
+            // sprintf(buffer,"%i db oltásra érkezőből %i kapott és %i nem kapott oltást.\n",paciensek,kapott,nemkapott);
+            //fputs(buffer,file);
             fclose(file);
 
 
