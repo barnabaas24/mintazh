@@ -16,7 +16,7 @@
 #include <sys/shm.h>
 
 void handler(int signumber) {
-  printf("Gyerek készen áll\n", signumber);
+  printf("Gyerek készen áll\n");
 }
 
 struct uzenet { 
@@ -42,6 +42,10 @@ int main(int argc, char** argv){
 
     key_t key = ftok(argv[0],1); // random kulcsot general -> ha nem jo akkor másik szám 2.param-nak
     int uzenetsor = msgget( key, 0600 | IPC_CREAT ); // 0600 user-nek olvasas és írás jog
+
+    if(uzenetsor==-1){
+        printf("error while opening mq\n");
+    }
 
     key_t kulcs = ftok(argv[0],52); // a parancs nevevel es az 52 verzio szammal kulcs generalas
     int oszt_mem_id = shmget(kulcs, 500, IPC_CREAT|S_IRUSR|S_IWUSR); // osztott memoria letrehozasa, irasra olvasasra, 500 bajt mrettel
